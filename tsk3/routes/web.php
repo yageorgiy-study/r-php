@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\WebController;
+use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', WebController::class . "@welcome");
+Route::get('/login', WebController::class . "@auth");
 
-Route::get('/login', function () {
-    return view('auth');
+Route::group([
+    'middleware' => AdminMiddleware::class,
+    'prefix' => 'admin'
+], function() {
+    Route::get('logs', WebController::class . "@logs");
+    Route::get('phpinfo', WebController::class . "@phpinfo");
+    Route::get('users', WebController::class . "@users");
 });
