@@ -16,7 +16,7 @@
         <input id="password" type="password">
     </div>
 
-    <button id="generate">Авторизироваться</button>
+    <button id="generate">Авторизоваться</button>
 </form>
 
 <script>
