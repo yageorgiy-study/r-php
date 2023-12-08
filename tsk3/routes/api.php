@@ -24,10 +24,11 @@ Route::get('/getRandomPassword', ApiController::class . "@getRandomNumber")
     ->name("api.getRandomPassword");
 
 Route::group([
-    'middleware' => 'api',
+    'middleware' => ['api'],
     'prefix' => 'auth'
 ], function ($router) {
-    Route::post('login',    AuthController::class . '@login');
+    Route::post('login',    AuthController::class . '@login')
+        ->name("api.auth.login");
     Route::post('logout',   AuthController::class . '@logout');
     Route::post('refresh',  AuthController::class . '@refresh');
     Route::post('me',       AuthController::class . '@me');
