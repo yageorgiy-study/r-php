@@ -33,7 +33,6 @@
         let login = document.getElementById("login");
         let password = document.getElementById("password");
 
-        console.log(login);
 
         // По клику на кнопку выполняем
         button.addEventListener("click",function(e){
@@ -79,8 +78,6 @@
             const data = new FormData();
             data.append('email', login.value);
             data.append('password', password.value);
-
-            console.log(data);
 
             // Выполняем запрос
             xhr.send(data);
