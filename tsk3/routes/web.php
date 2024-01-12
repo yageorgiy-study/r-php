@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', WebController::class . "@welcome");
-Route::get('/login', WebController::class . "@auth");
+Route::get('/login', WebController::class . "@auth")->name("web.auth");
+Route::get('/register', WebController::class . "@register");
+Route::get('/notifications', WebController::class . "@notifications");
 
 Route::group([
     'middleware' => AdminMiddleware::class,
